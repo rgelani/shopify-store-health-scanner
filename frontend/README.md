@@ -1,16 +1,91 @@
-# React + Vite
+# Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React + Vite frontend for Shopify Store Health Scanner.
 
-Currently, two official plugins are available:
+## Setup
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```bash
+# Install dependencies
+npm install
 
-## React Compiler
+# Start dev server
+npm run dev
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+# Build for production
+npm run build
 
-## Expanding the ESLint configuration
+# Preview production build
+npm run preview
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Dev server runs on: http://localhost:5173
+
+## Configuration
+
+Update API URL in `src/App.jsx`:
+
+```javascript
+// Local development
+const API_URL = 'http://localhost:8000';
+
+// Production
+const API_URL = 'https://yourapp.railway.app';
+```
+
+## Tech Stack
+
+- **React 18** - UI library
+- **Vite** - Build tool
+- **Tailwind CSS** - Styling
+- **Lucide React** - Icons
+
+## Project Structure
+
+```
+src/
+├── App.jsx       # Main component
+├── main.jsx      # Entry point
+└── index.css     # Tailwind imports
+```
+
+## Deploy to Netlify
+
+### Option 1: CLI
+```bash
+npm run build
+npm install -g netlify-cli
+netlify deploy --prod
+```
+
+### Option 2: Drag & Drop
+1. Run `npm run build`
+2. Go to https://app.netlify.com/drop
+3. Drag the `dist` folder
+
+### Option 3: GitHub
+1. Push code to GitHub
+2. Connect repo to Netlify
+3. Build command: `npm run build`
+4. Publish directory: `dist`
+
+## Environment Variables
+
+No environment variables needed. Update `API_URL` directly in `App.jsx`.
+
+## Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build
+- `npm run lint` - Run ESLint
+
+## Tailwind Configuration
+
+See `tailwind.config.js` for customization options.
+
+## Browser Support
+
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
