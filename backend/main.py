@@ -21,6 +21,7 @@ from bs4 import BeautifulSoup
 import re
 from typing import Optional, List, Dict
 import asyncio
+import os
 import uvicorn
 
 app = FastAPI(title="Shopify Store Health Scanner")
