@@ -23,13 +23,20 @@ from typing import Optional, List, Dict
 import asyncio
 import os
 import uvicorn
+import json
 
 app = FastAPI(title="Shopify Store Health Scanner")
 
 # CORS for frontend
+cors_origins = os.environ.get("CORS_ORIGINS", "[]")
+try:
+    cors_origins = json.loads(cors_origins)
+except Exception:
+    cors_origins = []
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173/"],  # Change to your frontend URL in production
+    allow_origins=cors_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
