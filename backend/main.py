@@ -21,6 +21,7 @@ from bs4 import BeautifulSoup
 import re
 from typing import Optional, List, Dict
 import asyncio
+import uvicorn
 
 app = FastAPI(title="Shopify Store Health Scanner")
 
@@ -321,5 +322,5 @@ async def scan_store(request: ScanRequest):
         raise HTTPException(status_code=500, detail=f"Scan failed: {str(e)}")
 
 if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    port = int(os.environ.get("PORT", 8000))
+    uvicorn.run(app, host="0.0.0.0", port=port)
