@@ -24,8 +24,10 @@ import asyncio
 import os
 import uvicorn
 import json
+import logging
 
 app = FastAPI(title="Shopify Store Health Scanner")
+logger = logging.getLogger(__name__)
 
 # CORS for frontend
 cors_origins = os.environ.get("CORS_ORIGINS", "[]")
@@ -324,6 +326,8 @@ async def scan_store(request: ScanRequest):
             }
         )
         
+    except HTTPException:
+        raise    
     except httpx.HTTPError as e:
         raise HTTPException(status_code=400, detail=f"Could not fetch store: {str(e)}")
     except Exception as e:
