@@ -7,7 +7,7 @@ export default function ShopifyScanner() {
   const [report, setReport] = useState(null);
   const [error, setError] = useState(null);
 
-  const API_URL = 'https://127.0.0.1:8000'; // Replace after deploying backend
+  const API_URL = 'https://shopify-store-health-scanner-production.up.railway.app'; // Replace after deploying backend
 
   const handleScan = async () => {
     if (!storeUrl) return;
